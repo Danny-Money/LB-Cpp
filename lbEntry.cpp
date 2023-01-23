@@ -31,6 +31,6 @@ std::string Entry::getTeam(){
 }
 
 std::string Entry::toString(){
-    std::string rtrnVal = _entName + "," + _teamNum + "," + std::to_string(_score);
+    std::string rtrnVal = std::to_string(_score) + "," + _entName + "," + _teamNum;
     return rtrnVal;
 }

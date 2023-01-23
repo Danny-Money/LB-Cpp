@@ -30,7 +30,7 @@ void writeFile(){
     std::ofstream dump_file ("test_text/test_dump.txt");
 
     dump_file.clear();
-    dump_file << "testing2" << std::endl;
+    dump_file << "testing" << std::endl;
 
     dump_file.close();
 }

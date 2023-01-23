@@ -1,9 +1,7 @@
-#include "read.cpp"
+#include "file_funcs.cpp"
 
 int main(){
     std::vector <Entry> k = readFile();
-    for (int i = 0; i < k.size(); i++) {
-        std::cout << k[i].toString() << std::endl;
-    }
+    writeFile();
     return 0;
 }

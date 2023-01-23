@@ -1,10 +1,9 @@
-#include "lbEntry.cpp"
+#include "read.cpp"
 
 int main(){
-    std::string v[] = {"783","Daniel Money","3536"};
-    Entry a = Entry();
-    Entry b = Entry(v);
-    std::cout << a.toString() << std::endl;
-    std::cout << b.toString() << std::endl;
+    std::vector <Entry> k = readFile();
+    for (int i = 0; i < k.size(); i++) {
+        std::cout << k[i].toString() << std::endl;
+    }
     return 0;
 }

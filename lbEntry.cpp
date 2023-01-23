@@ -2,7 +2,6 @@
 #include <iostream>
 
 Entry::Entry(){
-    std::cout << "Constructor is called." << std::endl;
     _score = 0;
     _entName = "Daniel Money";
     _teamNum = "3536";
@@ -17,7 +16,6 @@ Entry::Entry(std::string vals[]){
         _entName = vals[1];
         _teamNum = vals[2];
     }
-    std::cout << "Contructor with array is called" << std::endl;
 }
 
 int Entry::getScore(){

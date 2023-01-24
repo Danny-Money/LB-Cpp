@@ -78,6 +78,12 @@ std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt){
         arr.at(5) = newEnt;
         return arr;
     } else{
+        for(int i = 0; i < arr.size(); i++){
+            if (newEnt.equals(arr[i])){
+                arr.insert(arr.begin() + arr.size(), newEnt);
+                return arr;
+            }
+        }
         int place = 5;
         for (int i = 5; i >= 0; i--){
             if (newEnt.getScore() > arr[i].getScore()){

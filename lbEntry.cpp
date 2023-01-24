@@ -44,3 +44,15 @@ std::string Entry::toString(){
     std::string rtrnVal = std::to_string(_score) + "," + _entName + "," + _teamNum;
     return rtrnVal;
 }
+
+bool Entry::equals(Entry in){
+    if (this->_teamNum == in.getTeam() && this->_entName == in.getName()){
+        if (this->_score > in.getScore()){
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}

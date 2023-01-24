@@ -54,20 +54,37 @@ Entry readNew(){
     return Entry();
 }
 
-void writeFile(std::vector <Entry> dis_ent, Entry dump_ent){
+void writeFile(std::vector <Entry> sorted_ent){
     // Discard the previous bottom entry on the LB.
-    std::ofstream dump_file ("test_text/test_dump.txt");
-    dump_file << dump_ent.toString() << std::endl;
+    std::ofstream dump_file ("test_text/test_dump.txt", std::ios::out | std::ios::app );
+    dump_file << sorted_ent[sorted_ent.size() -1].toString() << std::endl;
     dump_file.close();
 
     // Write the new top scores to the LB.
     std::ofstream dis_file ("test_text/testfile.txt");
-    dis_file.clear();
-    for (int i = 0; i < dis_ent.size(); i ++){
-        dis_file << dis_ent[i].toString();
-        if (i < 4) {
+    for (int i = 0; i < sorted_ent.size() - 1; i ++){
+        dis_file << sorted_ent[i].toString();
+        if (i < sorted_ent.size() - 2) {
             dis_file << std::endl;
         }
     }
     dis_file.close();
+}
+
+std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt){
+    if (arr.size() != 5){
+        std::cout << "The input vector was not the correct size." << std::endl;
+        arr.resize(6);
+        arr.at(5) = newEnt;
+        return arr;
+    } else{
+        int place = 5;
+        for (int i = 5; i >= 0; i--){
+            if (newEnt.getScore() > arr[i].getScore()){
+                place = i;
+            }
+        }
+        arr.insert(arr.begin() + place, newEnt);
+        return arr;
+    }
 }

@@ -20,9 +20,6 @@ std::vector <Entry> readFile() {
                 } else {
                     a++;
                 }
-                // std::cout << temp[0] << std::endl;
-                // std::cout << temp[1] << std::endl;
-                // std::cout << temp[2] << std::endl;
             }
             vec.at(b) = Entry(temp);
             b++;

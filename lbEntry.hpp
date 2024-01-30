@@ -14,6 +14,7 @@ class Entry{
         // These are just the defined constructors.
         Entry(); // Defualt constructor that creates an Entry object with empty score & team # values, and the name set as 'Daniel Money'.
         Entry(std::string vals[]); // Expects an array of type std::string with 3 objects (in expected order): score, name, team number.
+        
     private:
         // Variables stored privately to prevent access from outside code.
         int _score;

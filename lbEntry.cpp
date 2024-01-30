@@ -1,7 +1,7 @@
 #include "lbEntry.hpp"
 #include <iostream>
 
-// Default onstructor.
+// Default constructor.
 Entry::Entry(){
     _score = 0;
     _entName = "Daniel Money";

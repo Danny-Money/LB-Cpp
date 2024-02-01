@@ -1,3 +1,4 @@
+#pragma once
 #include "lbEntry.hpp"
 #include <iostream>
 
@@ -23,6 +24,61 @@ Entry::Entry(std::string vals[]){
         _entName = vals[1];
         _teamNum = vals[2];
     }
+}
+
+//
+bool isSorted(std::vector<Entry> arr){
+    bool inOrder = true;
+    for (int i = 0; i < arr.size() - 1; i++){
+        if (arr[i].getScore() < arr[i+1].getScore()){
+            inOrder = false;
+        }
+    }
+
+    return inOrder;
+}
+
+std::vector<Entry> sortEntryArray(std::vector<Entry> arr){
+    bool isSorted = false;
+
+    while (!isSorted){
+        isSorted = true;
+        for (int i = 0; i < arr.size() - 1; i++){
+            if (arr[i].getScore() < arr[i+1].getScore()){
+                isSorted = false;
+                Entry temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+    }
+
+    return arr;
+}
+
+std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt){
+    if (arr.size() != 5){
+        std::cout << "The input vector was not the correct size." << std::endl;
+        arr.resize(6);
+        arr.at(5) = newEnt;
+    }
+    if (!isSorted(arr)){
+        arr = sortEntryArray(arr);
+    }
+    for(int i = 0; i < arr.size(); i++){
+        if (newEnt.equals(arr[i])){
+            arr.insert(arr.begin() + arr.size(), newEnt);
+            return arr;
+        }
+    }
+    int place = 5;
+    for (int i = 5; i >= 0; i--){
+        if (newEnt.getScore() > arr[i].getScore()){
+            place = i;
+        }
+    }
+    arr.insert(arr.begin() + place, newEnt);
+    return arr;
 }
 
 // The following functions return their assigned variables.

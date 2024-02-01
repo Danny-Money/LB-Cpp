@@ -11,6 +11,11 @@ class Entry{
         // Returns true if the Entry objects contain the same data.
         bool equals(Entry in);
 
+        // Sorting functions.
+        bool isSorted(std::vector<Entry> arr);
+        std::vector<Entry> sortEntryArray(std::vector<Entry> arr);
+        std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt);
+
         // These are just the defined constructors.
         Entry(); // Defualt constructor that creates an Entry object with empty score & team # values, and the name set as 'Daniel Money'.
         Entry(std::string vals[]); // Expects an array of type std::string with 3 objects (in expected order): score, name, team number.

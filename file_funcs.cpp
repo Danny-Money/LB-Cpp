@@ -60,6 +60,8 @@ void writeFile(std::vector <Entry> sorted_ent){
     dump_file << sorted_ent[sorted_ent.size() -1].toString() << std::endl;
     dump_file.close();
 
+    sorted_ent.resize(sorted_ent.size());
+
     // Write the new top scores to the LB.
     std::ofstream dis_file ("test_text/testfile.txt");
     for (int i = 0; i < sorted_ent.size() - 1; i ++){

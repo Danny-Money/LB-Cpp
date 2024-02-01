@@ -26,7 +26,7 @@ Entry::Entry(std::string vals[]){
     }
 }
 
-//
+// Checks if array is sorted & returns true/false based on result.
 bool isSorted(std::vector<Entry> arr){
     bool inOrder = true;
     for (int i = 0; i < arr.size() - 1; i++){
@@ -38,6 +38,7 @@ bool isSorted(std::vector<Entry> arr){
     return inOrder;
 }
 
+// Sorts the array based on score, and returns the sorted array.
 std::vector<Entry> sortEntryArray(std::vector<Entry> arr){
     bool isSorted = false;
 
@@ -56,23 +57,31 @@ std::vector<Entry> sortEntryArray(std::vector<Entry> arr){
     return arr;
 }
 
+// Sorts a new entry into the array of entries.
 std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt){
+    // Sorts array before adding newEnt.
+    if (!isSorted(arr)){
+        std::cout << "The entry array isn't sorted - sorting now." << std::endl;
+        arr = sortEntryArray(arr);
+    } else { std::cout << "The entry array is sorted." << std::endl; }
+
+    // Checks the size of the entry array and resizes it if necessary.
     if (arr.size() != 5){
         std::cout << "The input vector was not the correct size." << std::endl;
         arr.resize(6);
         arr.at(5) = newEnt;
     }
-    if (!isSorted(arr)){
-        arr = sortEntryArray(arr);
-    }
+
     for(int i = 0; i < arr.size(); i++){
         if (newEnt.equals(arr[i])){
+            std::cout << "Entry " + newEnt.toString() + " equals Entry " + arr[i].toString() << std::endl;
             arr.insert(arr.begin() + arr.size(), newEnt);
             return arr;
         }
     }
-    int place = 5;
-    for (int i = 5; i >= 0; i--){
+
+    int place = arr.size();
+    for (int i = arr.size(); i >= 0; i--){
         if (newEnt.getScore() > arr[i].getScore()){
             place = i;
         }
@@ -82,7 +91,6 @@ std::vector<Entry> sortEnt(std::vector<Entry> arr, Entry newEnt){
 }
 
 // The following functions return their assigned variables.
-
 int Entry::getScore(){
     return _score;
 }
